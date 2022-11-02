@@ -16,7 +16,7 @@ from models.review import Review
 
 
 class HBNBCommand(cmd.Cmd):
-    """ Holberton command prompt to access models data """
+    """ This is the command prompt to access models data """
     prompt = '(hbnb) '
     my_dict = {
         "BaseModel": BaseModel,

@@ -63,8 +63,8 @@ class TestBaseModel(unittest.TestCase):
         """Test that object is correctly created"""
         inst = BaseModel()
         self.assertIs(type(inst), BaseModel)
-        inst.name = "Holberton"
-        inst.number = 89
+        inst.name = "My_First_Model"
+        snst.number = 89
         attrs_types = {
             "id": str,
             "created_at": datetime,
@@ -77,7 +77,7 @@ class TestBaseModel(unittest.TestCase):
                 self.assertIn(attr, inst.__dict__)
                 self.assertIs(type(inst.__dict__[attr]), typ)
         self.assertTrue(mock_storage.new.called)
-        self.assertEqual(inst.name, "Holberton")
+        self.assertEqual(inst.name, "My_First_Model")
         self.assertEqual(inst.number, 89)
 
     def test_datetime_attributes(self):
@@ -85,7 +85,7 @@ class TestBaseModel(unittest.TestCase):
         and that upon creation have identical updated_at and created_at
         value."""
         tic = datetime.now()
-        inst1 = BaseModel()
+        snst1 = BaseModel()
         toc = datetime.now()
         self.assertTrue(tic <= inst1.created_at <= toc)
         time.sleep(1e-4)
@@ -115,7 +115,7 @@ class TestBaseModel(unittest.TestCase):
     def test_to_dict(self):
         """Test conversion of object attributes to dictionary for json"""
         my_model = BaseModel()
-        my_model.name = "Holberton"
+        my_model.name = "My_First_Model"
         my_model.my_number = 89
         d = my_model.to_dict()
         expected_attrs = ["id",
@@ -126,7 +126,7 @@ class TestBaseModel(unittest.TestCase):
                           "__class__"]
         self.assertCountEqual(d.keys(), expected_attrs)
         self.assertEqual(d['__class__'], 'BaseModel')
-        self.assertEqual(d['name'], "Holberton")
+        self.assertEqual(d['name'], "My_First_Model")
         self.assertEqual(d['my_number'], 89)
 
     def test_to_dict_values(self):
